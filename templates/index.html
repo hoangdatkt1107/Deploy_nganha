@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>GLOBAL CHAIN MANAGEMENT</title>
+  <meta charset="UTF-8">
+  <title>Nhắc Nhở Đi Ngủ</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Segoe UI",Arial,sans-serif;
+      background:#f2f5fa;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:40px 20px;
+      color:#222;
+    }
+    .shout{
+      font-size:48px;
+      font-weight:900;
+      line-height:1.2;
+      text-align:center;
+      margin-bottom:35px;
+      background:linear-gradient(45deg,#ff416c,#ffb199,#5efce8,#7367f0);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:hue 6s linear infinite;
+    }
+    @keyframes hue{0%{filter:hue-rotate(0)}100%{filter:hue-rotate(360deg)}}
+    .photo-box{
+      width:100%;
+      max-width:600px;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.15);
+      background:#fff;
+    }
+    .photo-box img{width:100%;display:block}
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-    <h2>GLOBAL CHAIN MANAGEMENT - Khoa Trần</h2>
+<body>
 
-    <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%;
-     padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-     border-radius: 8px; will-change: transform;">
-      <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-        src="https://www.canva.com/design/DAGTyzzHGvw/DFQqDxmDtrcvH-iLsK8wdw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-      </iframe>
-    </div>
+  <h1 class="shout">Đi ngủ ngay&nbsp;Nguyễn&nbsp;Ngân&nbsp;Hà&nbsp;!!!</h1>
 
-    <p>
-      <a href="https://www.canva.com/design/DAGTyzzHGvw/DFQqDxmDtrcvH-iLsK8wdw/view?utm_content=DAGTyzzHGvw&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-         target="_blank" rel="noopener">
-         Xem toàn màn hình trên Canva
-      </a>
-    </p>
+  <div class="photo-box">
+    <img src="{{ url_for('static', filename='ngan_ha.jpg') }}" alt="Ngân Hà đang buồn ngủ">
+  </div>
+
 </body>
 </html>
