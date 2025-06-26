@@ -1,49 +1,29 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Nhắc Nhở Đi Ngủ</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:"Segoe UI",Arial,sans-serif;
-      background:#f2f5fa;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:40px 20px;
-      color:#222;
-    }
-    .shout{
-      font-size:48px;
-      font-weight:900;
-      line-height:1.2;
-      text-align:center;
-      margin-bottom:35px;
-      background:linear-gradient(45deg,#ff416c,#ffb199,#5efce8,#7367f0);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:hue 6s linear infinite;
-    }
-    @keyframes hue{0%{filter:hue-rotate(0)}100%{filter:hue-rotate(360deg)}}
-    .photo-box{
-      width:100%;
-      max-width:600px;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 10px 25px rgba(0,0,0,.15);
-      background:#fff;
-    }
-    .photo-box img{width:100%;display:block}
-  </style>
+    <meta charset="UTF-8">
+    <title>Quản lý công việc</title>
 </head>
 <body>
-
-  <h1 class="shout">Đi ngủ ngay&nbsp;Nguyễn&nbsp;Ngân&nbsp;Hà&nbsp;!!!</h1>
-
-  <div class="photo-box">
-    <img src="{{ url_for('static', filename='ngan_ha.jpg') }}" alt="Ngân Hà đang buồn ngủ">
-  </div>
-
+    <h1>Danh sách công việc</h1>
+    <form method="post" action="{{ url_for('tasks') }}">
+        <input type="text" name="content" placeholder="Nhập việc cần làm" required>
+        <button type="submit">Thêm</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {% if task.done %}
+                <s>{{ task.content }}</s>
+            {% else %}
+                {{ task.content }}
+                <a href="{{ url_for('mark_done', id=task.id) }}">Đánh dấu hoàn thành</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li>Chưa có công việc nào.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('home') }}">Về trang chủ</a></p>
 </body>
 </html>
